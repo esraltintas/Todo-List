@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 type InputProps = {
   onAddTodo: (newTodo: string) => void;
 };
@@ -26,7 +29,10 @@ const Input: React.FC<InputProps> = ({ onAddTodo }) => {
         onChange={handleInputChange}
         placeholder="Enter a new todo"
       />
-      <button onClick={handleAddTodo}>Add Todo</button>
+      <button onClick={handleAddTodo}>
+        {" "}
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
     </div>
   );
 };

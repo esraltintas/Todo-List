@@ -1,6 +1,11 @@
 import React from "react";
 import Button from "../Button";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
+import { TodoItemWrapper } from "./index.styles";
+
 type ItemProps = {
   todo: {
     id: number;
@@ -21,7 +26,7 @@ const Item: React.FC<ItemProps> = ({ todo, onToggleTodo, onRemoveTodo }) => {
   };
 
   return (
-    <li
+    <TodoItemWrapper
       style={{
         textDecoration: todo.completed ? "line-through" : "none",
       }}
@@ -32,8 +37,10 @@ const Item: React.FC<ItemProps> = ({ todo, onToggleTodo, onRemoveTodo }) => {
         onChange={handleToggleTodo}
       />
       {todo.text}
-      <Button onClick={handleRemoveTodo}>Remove</Button>
-    </li>
+      <Button onClick={handleRemoveTodo}>
+        <FontAwesomeIcon icon={faTrashCan} />
+      </Button>
+    </TodoItemWrapper>
   );
 };
 
