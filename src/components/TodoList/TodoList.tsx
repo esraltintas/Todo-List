@@ -13,6 +13,7 @@ import {
   InputWrapper,
   IconWrapper,
   InputStyle,
+  ActionsWrapper,
 } from "./TodoList.styles";
 
 type Todo = {
@@ -28,7 +29,7 @@ const TodoList: React.FC = () => {
     { id: number; text: string; completed: boolean }[] | undefined
   >(todos);
 
-  const handleOnClick = () => {
+  const handleOnClickSearch = () => {
     const findTodo =
       todos && todos.length > 0
         ? todos.filter((todo) =>
@@ -86,6 +87,17 @@ const TodoList: React.FC = () => {
     setNewTodo(e.target.value);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleAddTodo();
+    }
+  };
+  const handleSearchKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleOnClickSearch();
+    }
+  };
+
   const handleAddTodo = () => {
     if (newTodo.trim() === "") return;
 
@@ -98,17 +110,32 @@ const TodoList: React.FC = () => {
       <Header>Todo List</Header>
 
       <TodoListWrapper>
-        <InputWrapper>
-          <InputStyle
-            type="text"
-            placeholder="Search..."
-            value={text}
-            onChange={(e: any) => setText(e.target.value)}
-          />
-          <IconWrapper type="button" onClick={handleOnClick}>
-            <FontAwesomeIcon icon={faSearch} />
-          </IconWrapper>
-        </InputWrapper>
+        <ActionsWrapper>
+          <InputWrapper>
+            <InputStyle
+              type="text"
+              value={newTodo}
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
+              placeholder="Enter a new todo"
+            />
+            <IconWrapper onClick={handleAddTodo}>
+              <FontAwesomeIcon icon={faPlus} />
+            </IconWrapper>
+          </InputWrapper>
+          <InputWrapper>
+            <InputStyle
+              type="text"
+              placeholder="Search..."
+              value={text}
+              onChange={(e: any) => setText(e.target.value)}
+              onKeyPress={handleSearchKeyPress}
+            />
+            <IconWrapper type="button" onClick={handleOnClickSearch}>
+              <FontAwesomeIcon icon={faSearch} />
+            </IconWrapper>
+          </InputWrapper>
+        </ActionsWrapper>
 
         <TodosWrapper>
           {todoList?.map((todo) => (
@@ -120,18 +147,6 @@ const TodoList: React.FC = () => {
             />
           ))}
         </TodosWrapper>
-
-        <InputWrapper>
-          <InputStyle
-            type="text"
-            value={newTodo}
-            onChange={handleInputChange}
-            placeholder="Enter a new todo"
-          />
-          <IconWrapper onClick={handleAddTodo}>
-            <FontAwesomeIcon icon={faPlus} />
-          </IconWrapper>
-        </InputWrapper>
       </TodoListWrapper>
     </>
   );

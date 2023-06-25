@@ -7,6 +7,7 @@ export const TodoItemWrapper = styled.li`
   margin: 10px;
   width: 400px;
   padding: 10px;
+  gap: 15px;
 `;
 
 export const ButtonTrash = styled.button`

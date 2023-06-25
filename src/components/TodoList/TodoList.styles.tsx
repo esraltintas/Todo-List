@@ -51,3 +51,10 @@ export const InputStyle = styled.input`
   border: none;
   outline: none;
 `;
+
+export const ActionsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
