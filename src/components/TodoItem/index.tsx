@@ -26,11 +26,7 @@ const Item: React.FC<ItemProps> = ({ todo, onToggleTodo, onRemoveTodo }) => {
   };
 
   return (
-    <TodoItemWrapper
-      style={{
-        textDecoration: todo.completed ? "line-through" : "none",
-      }}
-    >
+    <TodoItemWrapper completed={todo.completed}>
       <input
         type="checkbox"
         checked={todo.completed}

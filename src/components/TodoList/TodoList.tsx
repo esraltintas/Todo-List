@@ -120,7 +120,7 @@ const TodoList: React.FC = () => {
               placeholder="Enter a new todo"
             />
             <IconWrapper onClick={handleAddTodo}>
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon icon={faPlus} style={{ color: "#1abc9c" }} />
             </IconWrapper>
           </InputWrapper>
           <InputWrapper>
