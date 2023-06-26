@@ -19,7 +19,7 @@ export const TodoListWrapper = styled.div`
   padding: 20px;
   margin: 0 auto;
   margin-top: 86px;
-  width: 75%;
+  width: 60%;
   border: 1px solid #dd9b98;
   background-color: #fff;
   border-radius: 4px;
