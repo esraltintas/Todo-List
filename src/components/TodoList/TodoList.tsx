@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Input from "../Input";
 import TodoItem from "../TodoItem";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
